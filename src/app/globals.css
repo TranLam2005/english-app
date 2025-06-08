@@ -130,7 +130,7 @@
     width: 450px;
     height: 1800px;
     right: 0;
-    top: 0;
+    top: -35px;
     z-index: -1;
 }
 .custom-bg::after {
@@ -145,4 +145,18 @@
     left: 0;
     z-index: -1;
 }
- 
+
+
+.custom-list > li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  height: 70%;
+  width: 1px;
+  background-color: #23085A;
+  right: -10px;
+  top: 7px;
+}
+
+.custom-list  > li {
+  position: relative;
+}

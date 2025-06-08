@@ -21,7 +21,9 @@ const buttonVariants = cva(
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
         main:
-          "hover:underline text-white bg-[#23085A] !p-[25px] cursor-pointer !px-[50px] rounded-full flex items-center justify-center hover:bg-[#5DEB4B] hover:text-[#23085A] transition-all duration-700 ease-out"
+          "hover:underline text-white bg-[#23085A] !p-[25px] cursor-pointer !px-[50px] rounded-full flex items-center justify-center hover:bg-[#5DEB4B] hover:text-[#23085A] transition-all duration-700 ease-out",
+        logout:
+          "group flex items-center justify-start w-11 h-11 bg-green-500 rounded-full cursor-pointer relative overflow-hidden transition-all duration-200 shadow-lg hover:w-32 hover:rounded-lg active:translate-x-1 active:translate-y-1",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

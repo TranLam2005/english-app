@@ -1,0 +1,9 @@
+.before-custom::before {
+    background: url('https://learnenglish.britishcouncil.org/sites/podcasts/themes/bc_ui/images/check-pu.svg') no-repeat center;
+    width: 38px !important;
+    height: 38px !important;
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: -50px;
+}
