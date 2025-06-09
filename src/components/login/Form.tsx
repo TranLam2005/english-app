@@ -55,6 +55,8 @@ function LoginForm({titleBtn = 'ĐĂNG NHẬP'}: LoginFormProps) {
                 form.setError('password', {message: err.response?.data || 'username or password is incorrect'});
                 if (namePage === 'registry') {
                     form.setError('email', {message: err.response?.data || 'Email already exists.'});
+                    form.setError('username', {message: err.response?.data || 'Username already exists.'});
+                    setIsLoading(false);
                 }
             })
         }
