@@ -8,7 +8,8 @@ export const restApi: AxiosInstance = axios.create({
     timeout: 3000,
     headers: {
         "Content-Type": "application/json",
-    }
+    },
+    withCredentials: true,
 });
 
 restApi.interceptors.response.use(
