@@ -1,5 +1,5 @@
 'use client';
-import {z} from 'zod';
+import {set, z} from 'zod';
 import {useForm} from 'react-hook-form';
 import React from 'react';
 import {zodResolver} from '@hookform/resolvers/zod';
@@ -51,6 +51,7 @@ function LoginForm({titleBtn = 'ĐĂNG NHẬP'}: LoginFormProps) {
                 }
             })
             .catch(err => {
+                setIsLoading(false);
                 form.setError('username', {message: err.response?.data || 'username or password is incorrect'});
                 form.setError('password', {message: err.response?.data || 'username or password is incorrect'});
                 if (namePage === 'registry') {
