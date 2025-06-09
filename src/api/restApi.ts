@@ -2,6 +2,7 @@ import axios, {AxiosInstance, InternalAxiosRequestConfig} from "axios";
 import {toast} from 'sonner';
 import { getTokenFromCookies, TOKEN_TYPE } from "./Cookies";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
+console.log("API_URL", API_URL);
 export const restApi: AxiosInstance = axios.create({
     baseURL: API_URL,
     timeout: 3000,
