@@ -6,8 +6,11 @@ import CarouselComponent from '@/components/home/Carousel';
 import { Button } from '@/components/ui/button';
 import { mocks3 } from '@/states/mocks/home/mocks';
 import CoursesPracticeComponent from '@/components/home/CoursesPractice/CoursesPracticeComponent';
+import { getTokenFromCookies, TOKEN_TYPE } from '@/api/Cookies';
 
 export default function Home(): React.ReactNode {
+  const token: string | undefined = getTokenFromCookies(TOKEN_TYPE.ACCESS_TOKEN);
+  console.log('Token from cookies: ', token);
   return (
     <div className="flex flex-col items-center justify-center w-full h-fit">
       <div className="w-full h-[553px] bg-no-repeat bg-cover bg-[url('https://learnenglish.britishcouncil.org/sites/podcasts/files/styles/1280x500/public/2023-04/RS9260_GettyImages-1324510963_1440x960.jpg?itok=BRnKD4Xz')]">
