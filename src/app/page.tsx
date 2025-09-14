@@ -6,24 +6,18 @@ import CarouselComponent from '@/components/home/Carousel';
 import { Button } from '@/components/ui/button';
 import { mocks3 } from '@/states/mocks/home/mocks';
 import CoursesPracticeComponent from '@/components/home/CoursesPractice/CoursesPracticeComponent';
-import { getTokenFromCookies, TOKEN_TYPE } from '@/api/Cookies';
+import Banner from '@/components/commonComponent/banner/Banner';
+import { TitleHeaderBannerMock } from '@/components/commonComponent/banner/states/mocks';
 
 export default function Home(): React.ReactNode {
-  const token: string | undefined = getTokenFromCookies(TOKEN_TYPE.ACCESS_TOKEN);
-  console.log('Token from cookies: ', token);
   return (
     <div className="flex flex-col items-center justify-center w-full h-fit">
-      <div className="w-full h-[553px] bg-no-repeat bg-cover bg-[url('https://learnenglish.britishcouncil.org/sites/podcasts/files/styles/1280x500/public/2023-04/RS9260_GettyImages-1324510963_1440x960.jpg?itok=BRnKD4Xz')]">
-        <div className="flex flex-col items-start justify-center bg-white w-[740px] relative top-[160px] left-[100px] p-[80px] box-content rounded-tr-[50px]">
-          <div className="flex items-center gap-[20px]">
-            <img src={'https://learnenglish.britishcouncil.org/sites/podcasts/files/styles/medium/public/2025-02/British%20Council%20English%20indigo%20RGB_3.png?itok=ScGYu81L'} className="w-[200px] h-[33px]" alt="trademark"/>
-            <span className="text-[#23085A] text-[15px] relative font-semibold before:content-[''] before:w-[1px] before:h-full before:bg-[#23085A] before:absolute before:left-[-10px]">LearnEnglish</span>
-          </div>
-          <span className="text-[40px] text-[#23085A] font-bold mt-[20px]">
-            Learn English online and improve your skills through our high-quality courses and resources.
-          </span>
-        </div>
-      </div>
+      <Banner 
+        description='Learn English online and improve your skills through our high-quality courses and resources.'
+        imageBanerUrl='https://learnenglish.britishcouncil.org/sites/podcasts/files/styles/1280x500/public/2023-04/RS9260_GettyImages-1324510963_1440x960.jpg?itok=BRnKD4Xz'
+        TitleComponent={TitleHeaderBannerMock}
+
+      />
       <div className="p-[30px] w-full flex items-center justify-center">
         <p className="lg:w-[1070px] 2xl:w-[1280px] text-[32px]">
           Everything you find here has been specially created by the British Council, the English teaching experts.
@@ -83,21 +77,6 @@ export default function Home(): React.ReactNode {
           {mocks3.map((data, index) => (
             <OnlineCoursesComponent className='shadow-lg shadow-zinc-500/30 !w-[570px]' key={index} srcImage={data.srcImage} title={data.title} description={data.description} slug={data.slug}/>
           ))}
-      </div>
-      <div className='w-full bg-[#23085A] flex flex-col items-start justify-center gap-[20px] py-[50px] px-[70px]'>
-        <h2 className='text-[28px] text-white font-bold'>Online courses</h2>
-        <ul className='flex items-center justify-start gap-[30px] w-full'>
-          {mocksComponent1.map((item, index) => (
-            <OnlineCoursesComponent
-              key={index}
-              srcImage={item.srcImage}
-              title={item.title}
-              description={item.description}
-              slug={item.slug}
-              className='rounded-tl-[0px] rounded-br-[0px] !py-[0px] !h-[250px] border-l border-r border-[#552DA7] bg-[#23085A] text-white'
-            />
-          ))}
-        </ul>
       </div>
     </div>
   );

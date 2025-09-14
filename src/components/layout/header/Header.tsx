@@ -23,6 +23,7 @@ function Header() {
     const isAuthenticated: boolean = getTokenFromCookies(TOKEN_TYPE.ACCESS_TOKEN) !== '';
     const handleLogout = () => {
         removeTokenFromCookies(TOKEN_TYPE.ACCESS_TOKEN);
+        removeTokenFromCookies(TOKEN_TYPE.REFRESH_TOKEN);
         router.push('/login');
     }
     if (!isLoginPage) {

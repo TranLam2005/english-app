@@ -1,5 +1,5 @@
 import axios from "axios";
-import {TOKEN_TYPE, getTokenFromCookies} from "./Cookies";
+// import {TOKEN_TYPE, getTokenFromCookies} from "./Cookies";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
@@ -7,25 +7,25 @@ const InstanceApi = axios.create({
     baseURL: API_URL,
     timeout: 30000,
     headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
     },
     validateStatus: () => true,
 })
 
 export default InstanceApi;
 
-InstanceApi.interceptors.request.use(
-    (config) => {
-        const token = getTokenFromCookies(TOKEN_TYPE.ACCESS_TOKEN);
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`;
-        }
-        return config;
-    },
-    (error) => {
-        return Promise.reject(error);
-    }
-);
+// InstanceApi.interceptors.request.use(
+//     (config) => {
+//         const token = getTokenFromCookies(TOKEN_TYPE.ACCESS_TOKEN);
+//         if (token) {
+//             config.headers.Authorization = `Bearer ${token}`;
+//         }
+//         return config;
+//     },
+//     (error) => {
+//         return Promise.reject(error);
+//     }
+// );
 
 
 // handle error from server

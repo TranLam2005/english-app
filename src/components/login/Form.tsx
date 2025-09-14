@@ -5,7 +5,6 @@ import React from 'react';
 import {zodResolver} from '@hookform/resolvers/zod';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
 import { Input } from '../ui/input';
-import { restApi } from '@/api/restApi';
 import { TOKEN_TYPE } from '@/api/Cookies';
 import { useRouter } from 'next/navigation';
 import { setTokenToCookies } from '@/api/Cookies';
@@ -13,6 +12,7 @@ import { usePathname } from 'next/navigation';
 import { LoginFormProps } from './states';
 import { toast } from 'sonner';
 import Loading from '@/app/loading';
+import { restApi } from '@/api/restApi';
 
 const formSchema = z.object({
     username: z.string().min(2, {
@@ -38,10 +38,13 @@ function LoginForm({titleBtn = 'ĐĂNG NHẬP'}: LoginFormProps) {
     const onSubmit = (namePage: string) => (values: z.infer<typeof formSchema>) => {
         try {
             setIsLoading(true);
-            restApi.post(`/${namePage}`, values)
+            restApi.post(`/authenticated/${namePage}`, values)
             .then(res => {
                 if (namePage === 'login') {
-                    setTokenToCookies(TOKEN_TYPE.ACCESS_TOKEN, res.data);
+                    console.log(res);
+                    setTokenToCookies(TOKEN_TYPE.ACCESS_TOKEN, res.data.access);
+                    setTokenToCookies(TOKEN_TYPE.REFRESH_TOKEN, res.data.refresh);
+                    toast.success('Login successfully.');
                     setIsLoading(false);
                     router.push('/');
                 }
@@ -52,6 +55,7 @@ function LoginForm({titleBtn = 'ĐĂNG NHẬP'}: LoginFormProps) {
             })
             .catch(err => {
                 setIsLoading(false);
+                console.error('Login error:', err);
                 form.setError('username', {message: err.response?.data || 'username or password is incorrect'});
                 form.setError('password', {message: err.response?.data || 'username or password is incorrect'});
                 if (namePage === 'registry') {

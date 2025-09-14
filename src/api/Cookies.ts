@@ -8,7 +8,7 @@ export const initialToken: Token = {
 export const cookieOptions: Cookies.CookieAttributes = {
     expires: 1,
     secure: true,
-    sameSite: 'Strict',
+    // sameSite: 'Strict',
 };
 
 export enum TOKEN_TYPE {
@@ -25,9 +25,11 @@ export const parseJwt = (jwt: string): Token | null => {
         const payload = parts[1];
         const parsePayload = JSON.parse(atob(payload));
         const expired_at = parsePayload.exp ? parsePayload.exp * 1000 : Date.now() + 3600 * 1000; // Default to 1 hour if exp is not present\
+        const user_id = parsePayload.user_id;
         return {
             token: jwt,
-            expired_at: expired_at
+            expired_at: expired_at,
+            user_id: user_id,
         }
     }
     catch (error) {

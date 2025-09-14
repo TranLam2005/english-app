@@ -18,8 +18,8 @@ function FormLoginPage({title, type}: TypeFormOfPageProps): React.ReactNode {
                     <Link href="/registry" className="text-[#05a] relative left-[-88px]">Quên mật khẩu ?</Link>
                     <span className="flex w-full items-center gap-[15px] text-[#ccc]"><Separator className="flex-1"/> Hoặc <Separator className="flex-1"/></span>
                     <div className="flex items-center w-full justify-between ">
-                        <Button onClick={() => window.location.href = 'https://smarttech-367cffc9dc63.herokuapp.com/oauth2/authorization/facebook'} className="bg-[#23085A] w-[130px] text-white cursor-pointer"><FacebookIcon /> Facebook</Button>
-                        <Button onClick={() => window.location.href = 'https://smarttech-367cffc9dc63.herokuapp.com/oauth2/authorization/google'} className="bg-[#23085A] w-[130px] text-white cursor-pointer"><GoogleIcon /> Google</Button>
+                        <Button onClick={() => window.location.href = 'http://localhost:8080/oauth2/authorization/facebook'} className="bg-[#23085A] w-[130px] text-white cursor-pointer"><FacebookIcon /> Facebook</Button>
+                        <Button onClick={() => window.location.href = 'http://localhost:8080/oauth2/authorization/google'} className="bg-[#23085A] w-[130px] text-white cursor-pointer"><GoogleIcon /> Google</Button>
                     </div>
                 </div>
             ) }
